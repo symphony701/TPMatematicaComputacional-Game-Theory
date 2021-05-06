@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>674</width>
+    <height>599</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background:Coral;
+}
+
+QWidget{
+	background:#25252A;
+}
+QPushButton{
+
+	color:white;
+	background-color:rgb(255,0,68);
+	font:57 11pt &quot;Ubuntu&quot;;
+	border-radius:4px;
+	letter-spacing: 2px;
+	font-size:18px;
+
+	font-weight: bold
+}
+QPushButton:hover{
+	
+	background-color:#25252A;
+	border-color: #2d98da;
+	border-width : 2px;
+	border-style:inset;
+	
+}
+QLabel{
+	color:white;
+	border-color:white;
+	border-width : 2px;
+	border-style:inset;
+}
+QSpinBox{
+	color:white;
+	border-color:white;
+	background:#4b6584;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>30</y>
+     <width>451</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout"/>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>380</y>
+     <width>591</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Conjunto Solucion = {}</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>520</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
