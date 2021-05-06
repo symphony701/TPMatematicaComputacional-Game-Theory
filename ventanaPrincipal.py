@@ -28,16 +28,27 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
     def agregarDimensiones(self):
         
         self.arreglo=[]
+        
         for i in range(self.spinBox.value()):
             for j in range(self.spinBox_2.value()):
-                csm = QtWidgets.QLineEdit("hola")
+                csm = QtWidgets.QLineEdit("")
                 csm.setStyleSheet("color:black;border-radius:4px;border-color: white;background-color:#d1d8e0;")
                 self.gridLayout.addWidget(csm, i, j)
                 self.arreglo.append(csm)
                 
         
+    def procesar(self):
+        self.arr2 = []
         
+        for i in self.arreglo:
+            self.arr2.append(i.text()[0])
+            self.arr2.append(i.text()[2])
+            print(self.arr2)
+            
+            
+       
     def ensp(self):
+
         self.vent=Ventana()
         self.vent.exec_()
             
