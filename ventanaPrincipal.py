@@ -39,17 +39,14 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
         
     def procesar(self):
         self.arr2 = []
-        
         for i in self.arreglo:
             self.arr2.append(i.text()[0])
             self.arr2.append(i.text()[2])
-            
-            
-            
        
     def ensp(self):
         self.procesar()
         nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
+        nash.justpuras()
         self.vent=Ventana()
         self.vent.exec_()
             
