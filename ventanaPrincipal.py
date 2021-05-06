@@ -1,10 +1,10 @@
 import sys
 import mainwindow
 from PyQt5 import uic
-
 from equi import Ventana
 from PyQt5 import QtWidgets,QtCore,QtGui
 from PyQt5.QtWidgets import QApplication,QPushButton,QDialog,QGridLayout,QGroupBox,QVBoxLayout
+from programa import Nash
 import math
 import random
 
@@ -43,21 +43,24 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
         for i in self.arreglo:
             self.arr2.append(i.text()[0])
             self.arr2.append(i.text()[2])
-            print(self.arr2)
+            
             
             
        
     def ensp(self):
-
+        self.procesar()
+        nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
         self.vent=Ventana()
         self.vent.exec_()
             
         
     def eliminarDominadas(self):
+        self.procesar()
         self.vent=Ventana()
         self.vent.exec_()
         
     def extrategiasMixtas(self):
+        self.procesar()
         self.vent=Ventana()
         self.vent.exec_()
     def reiniciarMatriz(self):
