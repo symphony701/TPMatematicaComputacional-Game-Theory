@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication,QPushButton,QDialog,QGridLayout,QGroupB
 from programa import Nash
 import math
 import random
+import numpy as np
 
 
 class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
@@ -40,14 +41,14 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
     def procesar(self):
         self.arr2 = []
         for i in self.arreglo:
-            self.arr2.append(i.text()[0])
-            self.arr2.append(i.text()[2])
+            self.arr2.append(int(i.text()[0]))
+            self.arr2.append(int(i.text()[2]))
        
     def ensp(self):
         self.procesar()
         nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
-        nash.justpuras()
-        self.vent=Ventana()
+        matrizProcesada,conjuntoSolucion = nash.justpuras()
+        self.vent=Ventana(matrizProcesada,conjuntoSolucion)
         self.vent.exec_()
             
         

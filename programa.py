@@ -16,30 +16,29 @@ class Nash:
                 b +=2
                 self.matrix[i, j] = lista
 
-    def justpuras():
+    def justpuras(self):
             #jugador 1
         conjunto1 = []
-        for j in range(dimensionx):
+        for j in range(self.dimensionx):
             mayor = [0,0] 
-            for i in range(dimensiony):
-                if mayor[0]<= matrix[i,j][0] :
-                    mayor = matrix[i,j]
-            #conjunto1.append([mayor,[j,i]])
-            for k in range(dimensiony):
-                if mayor[0] == matrix[k,j][0]:
-                    conjunto1.append([matrix[k,j],[k,j]])
+            for i in range(self.dimensiony):
+                if mayor[0]<= self.matrix[i,j][0] :
+                    mayor = self.matrix[i,j]
+            for k in range(self.dimensiony):
+                if mayor[0] == self.matrix[k,j][0]:
+                    conjunto1.append([self.matrix[k,j],[k,j]])
 
         print(conjunto1)
         conjunto2 = []
         #jugador 2
-        for i in range(dimensionx):
+        for i in range(self.dimensionx):
             mayor = [0,0]
-            for j in range(dimensiony):
-               if mayor[1] <= matrix[i,j][1]:
-                mayor = matrix[i,j]
-            for k in range(dimensiony):
-             if mayor[1] == matrix[i,k][1]:
-                conjunto2.append([matrix[i,k],[i,k]])
+            for j in range(self.dimensiony):
+               if mayor[1] <= self.matrix[i,j][1]:
+                mayor = self.matrix[i,j]
+            for k in range(self.dimensiony):
+             if mayor[1] == self.matrix[i,k][1]:
+                conjunto2.append([self.matrix[i,k],[i,k]])
                 
         print(conjunto2)
 
@@ -50,4 +49,6 @@ class Nash:
               if conjunto1[i][1] == conjunto2[j][1]:
                 NashPuras.append(conjunto1[i])
 
-        print(NashPuras)
+
+        
+        return self.matrix,NashPuras
