@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>652</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background:Coral;
+}
+
+QWidget{
+	background:#25252A;
+}
+QPushButton{
+
+	color:white;
+	background-color:rgb(255,0,68);
+	font:57 11pt &quot;Ubuntu&quot;;
+	border-radius:4px;
+	letter-spacing: 2px;
+	font-size:18px;
+
+	font-weight: bold
+}
+QPushButton:hover{
+	
+	background-color:#25252A;
+	border-color: #2d98da;
+	border-width : 2px;
+	border-style:inset;
+	
+}
+QLabel{
+	color:white;
+	border-color:white;
+	border-width : 2px;
+	border-style:inset;
+}
+QSpinBox{
+	color:white;
+	border-color:white;
+	background:#4b6584;
+}</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>621</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Leonardo Manuel Grau Vargas - u201823031
+Omar Alejandro Rumiche Hernández - u202018635
+Johnny Miguel Sebastian Roque Neciosup - u201924261
+Kevin Stif sánchez Urbina - u201924600
+William Condori Saira - U201924394</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::MarkdownText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

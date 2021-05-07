@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 
 class Nash:
@@ -53,11 +54,19 @@ class Nash:
     
     
     def mixtas(self):
-        self.matrix = self.eliminarDominadas()
+        self.eliminarDominadas()
+        
         if self.dimensionx == 2 and self.dimensiony == 2:
-            resultado= "{(",self.calcularP(),"A )(",1-self.calcularP(),"B )(",self.calcularQ(),"X )(",1-self.calcularQ(),"Y)}"
-            return self.matrix,resultado
-        else: return
+            
+            resultado=""
+            resultado += "("
+            resultado += str(round(self.calcularP(),3))+ "A )(" +str(round(1-self.calcularP(),3)) + "B )(" +str(round(self.calcularQ(),3)) + "X )(" +str(round(1-self.calcularQ(),3))+"Y)"
+            
+            #resultado= "{("+str(self.calcularP())+"A )("+str(1-self.calcularP())+"B )("+str(self.calcularQ())+"X )("+str(1-self.calcularQ())+"Y)}"
+            
+            return self.matrix,resultado,self.dimensionx,self.dimensiony
+        else: 
+            print("em nani)?!")
     
     def calcularQ(self):
         n = self.matrix[1,1][0] - self.matrix[0,0][0]
@@ -76,7 +85,12 @@ class Nash:
             
             eCol = self.dominacionY()
             eFil = self.dominacionX()
-        return self.matrix , [],self.dimensionx,self.dimensiony
+        
+        if self.dimensionx == 1 and self.dimensiony ==1:
+            
+            return self.matrix , [[self.matrix[0,0],[]]],self.dimensionx,self.dimensiony
+        else:
+            return self.matrix , [],self.dimensionx,self.dimensiony
     
     def dominacionY(self):
         eCol = False

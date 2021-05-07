@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'errorMessage.ui'
+# Form implementation generated from reading ui file 'integrantes.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 300)
+        Dialog.resize(652, 300)
         Dialog.setStyleSheet("QMainWindow{\n"
 "    background:Coral;\n"
 "}\n"
@@ -51,17 +51,13 @@ class Ui_Dialog(object):
 "    color:white;\n"
 "    border-color:white;\n"
 "    background:#4b6584;\n"
-"}\n"
-"")
+"}")
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(20, 20, 351, 141))
+        self.label.setGeometry(QtCore.QRect(10, 10, 621, 241))
         self.label.setTextFormat(QtCore.Qt.MarkdownText)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(110, 210, 181, 31))
-        self.pushButton.setObjectName("pushButton")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -69,8 +65,11 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "EMM.. LO HAS INTENTADO CON OTRA ESTRATEGIA?"))
-        self.pushButton.setText(_translate("Dialog", "Salir"))
+        self.label.setText(_translate("Dialog", "Leonardo Manuel Grau Vargas - u201823031\n"
+"Omar Alejandro Rumiche Hernández - u202018635\n"
+"Johnny Miguel Sebastian Roque Neciosup - u201924261\n"
+"Kevin Stif sánchez Urbina - u201924600\n"
+"William Condori Saira - U201924394"))
 
 
 if __name__ == "__main__":

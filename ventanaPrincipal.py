@@ -6,6 +6,7 @@ from PyQt5 import QtWidgets,QtCore,QtGui
 from PyQt5.QtWidgets import QApplication,QPushButton,QDialog,QGridLayout,QGroupBox,QVBoxLayout
 from programa import Nash
 from errorMess import Error
+from integrante import Nosotrosuwu
 import math
 import random
 import numpy as np
@@ -93,13 +94,17 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
         
         try:
             nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
-            matrizProcesada,resultado = nash.mixtas()
+            matrizProcesada,resultado,dimensionx,dimensiony = nash.mixtas()
+            print(matrizProcesada)
             self.vent=Ventana(matrizProcesada,[],False,resultado)
+            self.vent.pintarMatriz(dimensionx,dimensiony)
+            self.vent.exec_()
             
         except Exception as ex:
-            print(ex)
+            self.error = Error()
+            self.error.exec_()
         
-        self.vent.exec_()
+        
     def reiniciarMatriz(self):
         while self.gridLayout.count():
             child = self.gridLayout.takeAt(0)
@@ -108,6 +113,6 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
         self.spinBox.setValue(1)
         self.spinBox_2.setValue(1)
     def aboutUs(self):
-        self.error = Error()
-        self.error.exec_()
+        self.nosotros = Nosotrosuwu()
+        self.nosotros.exec_()
         

@@ -14,6 +14,7 @@ class Ventana(QDialog):
         uic.loadUi("equilibrios.ui",self)
         self.matriz = matrizProcesada
         self.conjuntoSolucion = conjuntoSolucion
+        self.pushButton.clicked.connect(self.close)
         if mixtas==True:
             
             impresion = "Conjunto Solucion = { "
@@ -25,7 +26,9 @@ class Ventana(QDialog):
             impresion += "}"
         
         elif mixtas==False:
-            impresion = resultadoMixtas
+            impresion = "Conjunto Solucion = { "
+            impresion += resultadoMixtas
+            impresion += "}"
         
         self.label.setText(impresion)
             
