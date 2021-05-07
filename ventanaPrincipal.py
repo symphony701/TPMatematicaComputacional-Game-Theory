@@ -44,27 +44,61 @@ class Main(QtWidgets.QMainWindow,mainwindow.Ui_MainWindow):
         
     def procesar(self):
         self.arr2 = []
+        
         for i in self.arreglo:
-            self.arr2.append(int(i.text()[0]))
-            self.arr2.append(int(i.text()[2]))
+            numero=""
+            for j in str(i.text()):
+                if j==',' or j=='.':
+                    self.arr2.append(int(numero))
+                    numero=""
+                else:
+                    numero +=j
+            self.arr2.append(int(numero))
+          
+        
+            
        
     def ensp(self):
         self.procesar()
+        
         nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
         matrizProcesada,conjuntoSolucion = nash.justpuras()
+        dimensionx = self.spinBox.value()
+        dimensiony = self.spinBox_2.value()
         self.vent=Ventana(matrizProcesada,conjuntoSolucion)
-        
+        self.vent.pintarMatriz(dimensionx,dimensiony)
         self.vent.exec_()
             
         
     def eliminarDominadas(self):
         self.procesar()
-        self.vent=Ventana()
-        self.vent.exec_()
+        
+        
+        try:
+            nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
+            matrizProcesada,conjuntoSolucion,dimensionx,dimensiony = nash.eliminarDominadas()
+            self.vent=Ventana(matrizProcesada,conjuntoSolucion)
+            self.vent.pintarMatriz(dimensionx,dimensiony)
+            self.vent.exec_()
+        except Exception as ex:
+            print(ex)
+            self.error = Error()
+            self.error.exec_()
+        
+        
+        
         
     def extrategiasMixtas(self):
         self.procesar()
-        self.vent=Ventana()
+        
+        try:
+            nash = Nash(self.spinBox.value(),self.spinBox_2.value(),self.arr2)
+            matrizProcesada,resultado = nash.mixtas()
+            self.vent=Ventana(matrizProcesada,[],False,resultado)
+            
+        except Exception as ex:
+            print(ex)
+        
         self.vent.exec_()
     def reiniciarMatriz(self):
         while self.gridLayout.count():

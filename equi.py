@@ -9,25 +9,31 @@ import random
 import numpy as np
 
 class Ventana(QDialog):
-    def __init__(self,matrizProcesada,conjuntoSolucion):
+    def __init__(self,matrizProcesada,conjuntoSolucion=[],mixtas=True,resultadoMixtas=""):
         QDialog.__init__(self)
         uic.loadUi("equilibrios.ui",self)
         self.matriz = matrizProcesada
         self.conjuntoSolucion = conjuntoSolucion
-        impresion = "Conjunto Solucion = { "
-        for i in range(len(self.conjuntoSolucion)):
-            elemento = str(self.conjuntoSolucion[i][0])
-            impresion += elemento
-            impresion += " "
+        if mixtas==True:
             
-        impresion += "}"
+            impresion = "Conjunto Solucion = { "
+            for i in range(len(self.conjuntoSolucion)):
+                elemento = str(self.conjuntoSolucion[i][0])
+                impresion += elemento
+                impresion += " "
+                
+            impresion += "}"
+        
+        elif mixtas==False:
+            impresion = resultadoMixtas
         
         self.label.setText(impresion)
             
-    def pintarMatriz(self,matriz,dimensionx,dimensiony):
+    def pintarMatriz(self,dimensionx,dimensiony):
         for i in range(dimensionx):
             for j in range(dimensiony):
-                csm = QtWidgets.QLabel(matriz[x,y])
+                csm = QtWidgets.QLabel(str(self.matriz[i,j]))
                 csm.setStyleSheet("color:black;border-radius:4px;border-color: white;background-color:#d1d8e0;")
+                csm.setAlignment(QtCore.Qt.AlignCenter)
                 self.gridLayout.addWidget(csm,i,j)
                 
