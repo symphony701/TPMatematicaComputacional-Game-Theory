@@ -18,7 +18,7 @@ class Nash:
                 self.matrix[i, j] = lista
 
     def justpuras(self):
-            #jugador 1
+        """    #jugador 1
         conjunto1 = []
         for i in range(self.dimensiony):
             mayor = [0,0] 
@@ -49,8 +49,39 @@ class Nash:
                     NashPuras.append(conjunto1[i])
 
 
+        """
+        posmaxg1 = []
+        for i in range(self.dimensionx):
+            biggestJ1 = [0,0]
+            for j in range(self.dimensiony):
+                if self.matrix[i][j][1] > biggestJ1[1]:
+                    biggestJ1 = self.matrix[i][j]
+                    pos1 = (i, j)
+            posmaxg1.append(pos1)
+        #print(posmaxg1)
+
+        #Jugador 2
+        posmaxg2 = []
+        for j in range(self.dimensiony):
+            biggestJ2 = [0,0]
+            for i in range(self.dimensionx):
+                if self.matrix[i][j][0] > biggestJ2[0]:
+                    biggestJ2 = self.matrix[i][j]
+                    print(self.matrix[i][j])
+                    pos2 = (i, j)
+            posmaxg2.append(pos2)
+        #print(posmaxg2)
+
+        balNash = []
+
+        for i in range(len(posmaxg1)):
+            for j in range(len(posmaxg2)):
+                if posmaxg1[i] == posmaxg2[j]:
+                    balNash.append(self.matrix[posmaxg1[i][0]][posmaxg1[i][1]])
+            
+            
         
-        return self.matrix,NashPuras
+        return self.matrix,balNash
     
     
     def mixtas(self):
@@ -88,12 +119,12 @@ class Nash:
         
         if self.dimensionx == 1 and self.dimensiony ==1:
             
-            return self.matrix , [[self.matrix[0,0],[]]],self.dimensionx,self.dimensiony
+            return self.matrix , [self.matrix[0,0]],self.dimensionx,self.dimensiony
         else:
             return self.matrix , [],self.dimensionx,self.dimensiony
     
     def dominacionY(self):
-        eCol = False
+        """eCol = False
         for y in range(self.dimensiony - 1):
             conty = 1
 
@@ -131,8 +162,37 @@ class Nash:
                 break
 
         return eCol
+    """
+        todelCol=False
+        for j in range(self.dimensiony - 1):
+            for j2 in range(j + 1, self.dimensiony):
+                domination_score = [[],[]]
+                for i in range(self.dimensionx):
+                    if self.matrix[i][j][1] < self.matrix[i][j2][1]:
+                        domination_score[1].append(1)
+                    elif self.matrix[i][j][1] > self.matrix[i][j2][1]:
+                        domination_score[0].append(1)
+
+                if not len(domination_score[0]):
+                    print(self.dimensiony, j)
+                    todelCol = True
+                    pos_dc = j
+                    self.matrix = np.delete(self.matrix, pos_dc, axis = 1)
+                    self.dimensiony -= 1
+                    return todelCol
+                elif not len(domination_score[1]):
+                    print(self.dimensiony, j2)
+                    todelCol = True
+                    pos_dc = j2
+                    self.matrix = np.delete(self.matrix, pos_dc, axis = 1)
+                    self.dimensiony -= 1
+                    return todelCol 
+        return todelCol
+    
+    
     
     def dominacionX(self):
+        """
         eFil=False
         for x in range(self.dimensionx - 1):
             contx = 1
@@ -167,4 +227,28 @@ class Nash:
             if eFil:
                 break
         return eFil
+        """
+        todelRow = False
+        for i in range(self.dimensionx - 1):
+            for i2 in range(i + 1, self.dimensionx):
+                domination_score = [[],[]]
+                for j in range(self.dimensiony):
+                    if self.matrix[i][j][0] < self.matrix[i2][j][0]:
+                        domination_score[1].append(1)
+                    elif self.matrix[i][j][0] > self.matrix[i2][j][0]:
+                        domination_score[0].append(1)
+                if not len(domination_score[0]):
+                    todelRow = True
+                    pos_dr = i
+                    self.matrix = np.delete(self.matrix, pos_dr, axis = 0)
+                    self.dimensionx -=1
+                    return todelRow
+                elif not len(domination_score[1]):
+                    todelRow = True
+                    pos_dr = i2
+                    self.matrix = np.delete(self.matrix, pos_dr, axis = 0)
+                    self.dimensionx -=1
+                    return todelRow
+        return todelRow        
         
+    

@@ -19,7 +19,8 @@ class Ventana(QDialog):
             
             impresion = "Conjunto Solucion = { "
             for i in range(len(self.conjuntoSolucion)):
-                elemento = str(self.conjuntoSolucion[i][0])
+                #Cambiar aqui si no funcionan las demas xd
+                elemento = str(self.conjuntoSolucion[i])
                 impresion += elemento
                 impresion += " "
                 
